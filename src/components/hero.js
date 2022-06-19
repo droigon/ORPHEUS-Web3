@@ -22,7 +22,7 @@ export default function Hero() {
         <div className=" rounded-md shadow">
           <a
             href="#"
-            className=" w-full flex items-center border border-gold-1 divide-gold-2  justify-center px-8 py-3 text-base font-medium rounded-sm  text-transparent bg-clip-text bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 md:py-4 md:text-lg md:px-10"
+            className=" w-full flex items-center text-gold-1 border border-gold-1 divide-gold-2  justify-center px-8 py-3 text-base font-medium rounded-sm  text-transparent bg-clip-text bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 md:py-4 md:text-lg md:px-10"
           >
            WORKS
           </a>
