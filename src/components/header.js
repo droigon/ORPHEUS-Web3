@@ -5,7 +5,6 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import logo from '../images/logo.png'
 import dark from '../images/dark_logo.png';
 import { networks } from './utils/networks';
-import Toggle from './ThemeToggle';
 
 const navigation = [
   { name: 'Works', href: '#works' },
@@ -18,8 +17,6 @@ const navigation = [
 
 const Header = () =>{
   const [currentAccount, setCurrentAccount] = useState('');
-	const [domain, setDomain] = useState('');
-	const [record, setRecord] = useState('');
 	const [network, setNetwork] = useState('');
 	const [mints, setMints] = useState([]);
 const connectWallet = async () => {

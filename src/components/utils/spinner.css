@@ -1,7 +1,5 @@
 @keyframes spinner {
     0% {
-      width: 40vh;
-    height: 40vh;
         background: url("../utils/loaders/1.png") no-repeat center center;
       transform: rotate(0deg);
     }

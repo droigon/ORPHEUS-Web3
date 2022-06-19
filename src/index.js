@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <Background>
-      <div className="absolute right-16 md:right-[620px] top-0 mr-4 mt-6 md:mr-6 md:mt-6">
+      <div className="absolute right-16 md:right-[620px] z-50 top-0 mr-4 mt-6 md:mr-6 md:mt-6">
             <Toggle />
           </div>
     <App />
