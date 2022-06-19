@@ -1,24 +1,136 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState,React } from 'react'
+import { Fragment, useState,useEffect,React } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import logo from '../images/logo.png'
 import Toggle from '../components/toggle';
 import dark from '../images/dark_logo.png';
+import { networks } from './utils/networks';
 
 const navigation = [
   { name: 'Works', href: '#' },
   { name: 'Contribution', href: '#' },
   { name: 'Community', href: '#' },
-  { name: 'Get In Tuch', href: '#' },
+  { name: 'Get In Touch', href: '#' },
 ]
 
 
 
-export default function Header() {
-  const [darkMode, setDarkMode] = useState(false);
+const Header = () =>{
+  const [currentAccount, setCurrentAccount] = useState('');
+	const [domain, setDomain] = useState('');
+	const [record, setRecord] = useState('');
+	const [network, setNetwork] = useState('');
+	const [mints, setMints] = useState([]);
+const connectWallet = async () => {
+		try {
+			const { ethereum } = window;
+
+			if (!ethereum) {
+				alert("Get MetaMask -> https://metamask.io/");
+				return;
+			}
+
+			// Fancy method to request access to account.
+			const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+		
+			// Boom! This should print out public address once we authorize Metamask.
+			console.log("Connected", accounts[0]);
+			setCurrentAccount(accounts[0]);
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const switchNetwork = async () => {
+		if (window.ethereum) {
+			try {
+				// Try to switch to the Mumbai testnet
+				await window.ethereum.request({
+					method: 'wallet_switchEthereumChain',
+					params: [{ chainId: '0x13881' }], // Check networks.js for hexadecimal network ids
+				});
+			} catch (error) {
+				// This error code means that the chain we want has not been added to MetaMask
+				// In this case we ask the user to add it to their MetaMask
+				if (error.code === 4902) {
+					try {
+						await window.ethereum.request({
+							method: 'wallet_addEthereumChain',
+							params: [
+								{	
+									chainId: '0x13881',
+									chainName: 'Polygon Mumbai Testnet',
+									rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
+									nativeCurrency: {
+											name: "Mumbai Matic",
+											symbol: "MATIC",
+											decimals: 18
+									},
+									blockExplorerUrls: ["https://mumbai.polygonscan.com/"]
+								},
+							],
+						});
+					} catch (error) {
+						console.log(error);
+					}
+				}
+				console.log(error);
+			}
+		} else {
+			// If window.ethereum is not found then MetaMask is not installed
+			alert('MetaMask is not installed. Please install it to use this app: https://metamask.io/download.html');
+		} 
+	}
+
+	const checkIfWalletIsConnected = async () => {
+		const { ethereum } = window;
+
+		if (!ethereum) {
+			console.log('Make sure you have metamask!');
+			return;
+		} else {
+			console.log('We have the ethereum object', ethereum);
+		}
+
+		const accounts = await ethereum.request({ method: 'eth_accounts' });
+
+		if (accounts.length !== 0) {
+			const account = accounts[0];
+			console.log('Found an authorized account:', account);
+			setCurrentAccount(account);
+		} else {
+			console.log('No authorized account found');
+		}
+		const chainId = await ethereum.request({ method: 'eth_chainId' });
+		setNetwork(networks[chainId]);
+
+		ethereum.on('chainChanged', handleChainChanged);
+		
+		// Reload the page when they change networks
+		function handleChainChanged(_chainId) {
+			window.location.reload();
+		}
+	};
+  
+  const renderNotConnectedContainer = () => (
+		<div className="connect-wallet-container">
+			<img src="https://media.giphy.com/media/lPWg6alOSG3DlsBNnC/giphy.gif" alt="Ninja donut gif" />
+			{/* Call the connectWallet function we just wrote when the button is clicked */}
+			<button onClick={connectWallet} className="cta-button connect-wallet-button">
+				Connect Wallet
+			</button>
+		</div>
+	);
+  useEffect(() => {
+		console.log("checking....")
+		checkIfWalletIsConnected();
+	}, []);
+
+
+
   return (
-    <div className="relative h-20  ">
+        <div className="relative h-20  ">
         <div className="max-w-9xl mx-auto">
         <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-9xl lg:w-full lg:pb-28 xl:pb-32">
           <Popover>
@@ -48,10 +160,8 @@ export default function Header() {
                       {item.name}
                     </a>
                   ))}
-                <Toggle />
-                  <a href="#" className="font-medium text-white hover:text-indigo-500">
-                    Connect Wallet
-                  </a>
+                  { currentAccount ? <button className='px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3'> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </button> : 
+                  <button className='  px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3' onClick={connectWallet}> Connect Wallet </button> }
                 </div>
               </nav>
             </div>
@@ -112,5 +222,10 @@ export default function Header() {
         </div>
       </div>
     </div>
-  )
+
+  );
 }
+
+export default Header;
+
+

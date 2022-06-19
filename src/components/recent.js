@@ -4,6 +4,9 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import img_1 from '../images/img_1.png'
 import img_2 from '../images/img_2.png'
 import img_3 from '../images/img_3.png'
+import img_4 from '../images/img_4.png'
+import img_5 from '../images/img_5.png'
+import img_6 from '../images/img_6.png'
 import line from '../images/line.png'
 
 
@@ -30,11 +33,29 @@ export default function Recent() {
             <div class="relative overflow-hidden rounded-lg px-3 shadow-lg cursor-pointer">
                 <img class="object-cover h-full w-full" src={img_2} />
                 <div class="absolute bottom-0 left-0  px-6 py-4">
-                <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past 1 - NFT</h4>
+                <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past † - NFT</h4>
                 </div>
             </div>
             <div class="relative overflow-hidden rounded-lg px-3 shadow-lg cursor-pointer">
                 <img class="object-cover w-full h-full" src={img_3} />
+                <div class="absolute bottom-0 left-0  px-6 py-4">
+                <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past 1 - NFT</h4>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg px-3 shadow-lg cursor-pointer">
+                <img class="object-cover w-full h-full" src={img_4} />
+                <div class="absolute bottom-0 left-0  px-6 py-4">
+                <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past 1 - NFT</h4>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg px-3 shadow-lg cursor-pointer">
+                <img class="object-cover w-full h-full" src={img_6} />
+                <div class="absolute bottom-0 left-0  px-6 py-4">
+                <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past 1 - NFT</h4>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg px-3 shadow-lg cursor-pointer">
+                <img class="object-cover w-full h-full" src={img_5} />
                 <div class="absolute bottom-0 left-0  px-6 py-4">
                 <h4 class="mb-3 text-xl font-small tracking-tight text-white">Relics Of A Mortal Past 1 - NFT</h4>
                 </div>

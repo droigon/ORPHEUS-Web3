@@ -16,13 +16,13 @@ export default function Hero() {
         <span className="block font-Cinzel font-normal  text-transparent bg-clip-text bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 xl:inline tracking-[25px]">ORPHEUS</span>
       </h1>
       <p className="mt-3 text-base text-ashs-1 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-      Product & Graphic Designer, with experience in delivering end-to-end UX/UI design for software products.
+      Web3 fullstack and NFT developer, with experience in delivering end-to-end UX/UI design for software products.
       </p>
       <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
         <div className=" rounded-md shadow">
           <a
             href="#"
-            className=" w-full flex items-center border border-gold-1 divide-yellow-300  justify-center px-8 py-3 text-base font-medium rounded-sm text-white text-transparent bg-clip-text bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 md:py-4 md:text-lg md:px-10"
+            className=" w-full flex items-center border border-gold-1 divide-gold-2  justify-center px-8 py-3 text-base font-medium rounded-sm text-white text-transparent bg-clip-text bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 md:py-4 md:text-lg md:px-10"
           >
            WORKS
           </a>
