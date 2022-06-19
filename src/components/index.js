@@ -5,3 +5,5 @@ export { default as Contribution } from './contribution';
 export { default as Avatar } from './avatar';
 export { default as Community } from './community';
 export { default as LoadingSpinner } from './utils/loadingSpinner';
+export { default as Background } from './background';
+export { default as Toggle } from './ThemeToggle';

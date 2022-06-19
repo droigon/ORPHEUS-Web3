@@ -14,12 +14,12 @@ const App = () => {
   const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 6000)
+    setTimeout(() => setIsLoading(false), 3000)
   }, [])
 
   return(
     <>
-    {isloading ? <div className="App "> <LoadingSpinner /></div>: (
+    {isloading ? <div className="App dark "> <LoadingSpinner /></div>: (
   <div className="App">
     <div className="">
       <Header />

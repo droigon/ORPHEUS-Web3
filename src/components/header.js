@@ -3,15 +3,15 @@ import { Fragment, useState,useEffect,React } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import logo from '../images/logo.png'
-import Toggle from '../components/toggle';
 import dark from '../images/dark_logo.png';
 import { networks } from './utils/networks';
+import Toggle from './ThemeToggle';
 
 const navigation = [
-  { name: 'Works', href: '#' },
-  { name: 'Contribution', href: '#' },
-  { name: 'Community', href: '#' },
-  { name: 'Get In Touch', href: '#' },
+  { name: 'Works', href: '#works' },
+  { name: 'Contribution', href: '#contribution' },
+  { name: 'Community', href: '#community' },
+  { name: 'Get In Touch', href: '#touch' },
 ]
 
 
@@ -139,14 +139,16 @@ const connectWallet = async () => {
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <a href="#" className='flex lg:justify-start'>
-                      <img
-                        alt="Workflow"
-                        className="h-8 w-auto sm:h-10"
-                        src={logo}
-                      />
-                      <span className="lg-only text-white items-center py-2 px-3 justify-between">ORPHEUS</span>
+                    <div className='bg-white-logo dark:bg-dark-logo grid content-center bg-contain border-0 bg-no-repeat h-8 w-24 sm:h-10'>
+                    <span className="lg-only text-wBgText dark:text-white items-center px-12 justify-between">ORPHEUS</span>
+                      </div>
+                     
+                      
+                      
+                     
                     </a>
-                    <div className="-mr-2 flex items-center md:hidden">
+                    
+                    <div className="mr-2 flex items-center md:hidden">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Open main menu</span>
                         <MenuIcon className="h-6 w-6" aria-hidden="true" />
@@ -154,12 +156,14 @@ const connectWallet = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                
+                <div className="hidden md:block  md:ml-10 md:pr-4 md:space-x-8">
                   {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className="font-medium text-white hover:text-gray-900">
+                    <a key={item.name} href={item.href} className="font-medium text-wBgText dark:text-white hover:text-gray-900">
                       {item.name}
                     </a>
                   ))}
+                   
                   { currentAccount ? <button className='px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3'> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </button> : 
                   <button className='  px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3' onClick={connectWallet}> Connect Wallet </button> }
                 </div>
@@ -196,7 +200,8 @@ const connectWallet = async () => {
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1">
+                  
+                  <div className="px-1 pt-2 pb-3 space-y-1">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -207,12 +212,8 @@ const connectWallet = async () => {
                       </a>
                     ))}
                   </div>
-                  <a
-                    href="#"
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
-                  >
-                    Log in
-                  </a>
+                  { currentAccount ? <button className='px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 mb-4 bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3'> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </button> : 
+                  <button className='  px-4 py-3 border border-transparent text-base font-medium rounded-sm  bg-gradient-to-r from-gold-1 via-gold-2 to-gold-3 bg-gradient-to-r mb-4 from-gold-1 via-gold-2 to-gold-3' onClick={connectWallet}> Connect Wallet </button> }
                 </div>
               </Popover.Panel>
             </Transition>

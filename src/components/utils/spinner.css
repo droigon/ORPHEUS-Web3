@@ -21,8 +21,8 @@
     }
   }
   .loading-spinner {
-    width: 300px;
-    height: 300px;
+    width: 30vh;
+    height: 30vh;
     border: 10px solid linear-gradient(to right, red, orange); /* Light grey */
     border-top: 10px solid #383636; /* Black */
     border-radius: 50%;
