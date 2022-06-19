@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaSun, FaMoon} from "react-icons/fa";
 import { ThemeContext } from './ThemeContext';
 import sun from '../images/sun.png'
 import moon from '../images/moon.png'
